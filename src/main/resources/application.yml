@@ -23,6 +23,12 @@ spring.jpa:
       format_sql: true
   show-sql: true
 
+database:
+  # TASK
+  task_management_schema: C##_TASK_MANAGEMENT
+  task_management_table: TBL_TASK
+  task_management_sequence: TASK_SEQ
+
 ---
 spring:
   profiles: local_spring_boot
