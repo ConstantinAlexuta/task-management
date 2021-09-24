@@ -1,0 +1,29 @@
+spring:
+  profiles:
+    active: ${spring_profile:local_spring_boot} # "local_spring_boot", "local_wildfly", "local_jenkins_spring_boot", "dev_wildfly", "dev_jenkins"
+  application:
+    name: TaskManagement
+
+server:
+  port: 8080
+
+spring.datasource:
+  driver-class-name: oracle.jdbc.OracleDriver
+  url: jdbc:oracle:thin:@//localhost:1521/xe
+  username: SYSTEM
+  password: DDaeklmg98$%&Djyjkuy5DDD
+
+spring.jpa:
+  database-platform: org.hibernate.dialect.Oracle10gDialect
+  hibernate:
+    ddl-auto: update
+  properties:
+    hibernate:
+      default_schema: C##_TASK_MANAGEMENT
+      format_sql: true
+  show-sql: true
+
+---
+spring:
+  profiles: local_spring_boot
+
