@@ -1,0 +1,108 @@
+<div class="container pb-4 mb-4">
+
+    <form [formGroup]="itemForm" (ngSubmit)="submitForm()">
+
+        <div class="form-group">
+            <label for="index">
+                <span>Index</span>
+            </label>
+            <input class="form-control form-control-sm" name="index" id="index" type="text" formControlName="index"
+            [attr.disabled]="true" style="background-color: whitesmoke;"
+            value=""
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="id">
+                <span>Database id</span>
+            </label>
+            <input class="form-control form-control-sm" name="id" id="id" type="text" formControlName="id"
+            [attr.disabled]="true"  style="background-color: whitesmoke;"
+            value=""
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="description">
+                <span>Description</span>
+            </label>
+            <input class="form-control form-control-sm" name="description" id="description" type="text"
+                formControlName="description"  style="background-color: oldlace;"
+                placeholder=""
+            value=""
+            >
+        </div>
+
+        <div class="form-group">
+            <label for="status">
+                <span>Status</span>
+            </label>
+            <input class="form-control form-control-sm" name="status" id="status" type="text"
+                formControlName="status"  style="background-color: oldlace;"
+                placeholder=""
+            value=""
+            >
+        </div>
+
+        <div class="mt-4 mb-3">
+
+            <button type="submit" class="btn btn-outline-secondary px-4 mx-4 py-2 my-2"
+                [disabled]="itemForm.pristine">
+                Save changes
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary px-4 mx-4 py-2 my-2"
+                (click)="clearItemForm()"
+                [routerLink]="['../../../view-all']"
+                routerLinkActive="active"
+                [routerLinkActiveOptions]="{exact: true}">
+                Back to all
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary px-4 mx-4 py-2 my-2"
+                (click)="onCancelOrExitEdit()">
+                <span *ngIf="itemForm.dirty">
+                    Cancel edit
+                </span>
+                <span *ngIf="itemForm.pristine">
+                    &nbsp; Exit &nbsp;edit &nbsp;
+                </span>
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary px-4 mx-4 py-2 my-2"
+                (click)="loadItemIntoItemForm()">
+                Initial form
+            </button>
+
+            <button type="button" class="btn btn-outline-secondary px-4 mx-4 py-2 my-2"
+                (click)="clearItemForm()">
+                Clear form
+            </button>
+
+        </div>
+
+        <div>
+            <div *ngIf="showMessageIfModificationIsSavedOnServerWithFailure" style="color: red">
+                {{messageIfModificationIsSavedOnServerWithFailure}}
+            </div>
+
+            <div *ngIf="showMessageIfWasSavedWithBankSpacesAtMargins" style="color: rgb(7, 204, 230)">
+                {{messageIfWasSavedWithBankSpacesAtMargins}}
+            </div>
+
+            <div *ngIf="showMessageIfModificationIsSavedOnServerWithSuccess" style="color: green">
+                {{messageIfModificationIsSavedOnServerWithSuccess}}
+            </div>
+
+            <div *ngIf="showMessageItemHasNotthingChanged" style="color: blue">
+                {{messageItemHasNotthingChanged}}
+            </div>
+
+            <div *ngIf="showMessageIfItemFormIsInvalid" style="color: red">
+                {{messageIfItemFormIsInvalid}}
+            </div>
+        </div>
+
+    </form>
+
+</div>

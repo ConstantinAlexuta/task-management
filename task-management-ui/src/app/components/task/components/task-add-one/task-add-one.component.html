@@ -1,0 +1,130 @@
+<div class="container py-4 my-4">
+
+    <h5 class="mt-0 mb-4">Add a new to do task description</h5>
+
+    <form [formGroup]="taskFormGroup" (ngSubmit)="!isSavedSuccessfully && onSubmit(taskFormGroup)" novalidate>
+
+        <div class="form-group">
+
+            <label for="description">Description</label>
+
+            <span *ngIf="taskFormGroup.controls['description'].touched">
+
+                <span *ngIf="taskFormGroup.controls['description'].errors?.required" class="alert alert-danger small  p-1" align="center">
+                    Description is required.
+                </span>
+
+            </span>
+
+            <input type="text"
+                id="description"
+                formControlName="description"
+                class="form-control form-control-sm"
+                readonly="{{readonlyAfterSave}}"
+                required
+                autofocus />
+
+        </div>
+
+
+        <div class="form-group">
+
+            <label>Status</label>
+
+            <span *ngIf="taskFormGroup.controls['status'].touched
+                      && taskFormGroup.controls['status'].invalid">
+
+                <span *ngIf="taskFormGroup.controls['status'].errors?.required" class="alert alert-danger small  p-1"
+                    align="center">
+                    Status is required.
+                </span>
+
+            </span>
+
+            <input type="text"
+                class="form-control form-control-sm"
+                id="status"
+                formControlName="status"
+                readonly="{{readonlyAfterSave}}"
+                required
+                placeholder="To do"
+
+                autofocus [attr.disabled]="true"  style="background-color: whitesmoke;" value="To do"
+            />
+        </div>
+
+
+        <div *ngIf="!showRefreshPageInCaseOfFailureAndHideOtherOptions">
+
+            <button  type="submit"
+                class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" (click)="onSave()">
+                Save item
+            </button>
+
+            <button type="reset"
+                class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" (click)="onClearForm()">
+                Clear form
+            </button>
+
+<!--            <button *ngIf="showFillForm" type="button"-->
+<!--                class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" (click)="onFillForm()">-->
+<!--                Fill form-->
+<!--            </button>-->
+
+        </div>
+
+        <div *ngIf="showRefreshPageInCaseOfFailureAndHideOtherOptions">
+
+            <button type="button" class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" (click)="onRefreshTheEntirePage()">
+                Refresh the entire page
+            </button>
+
+        </div>
+
+        <div class="mt-3">
+
+            <span class="has-info mb-3">
+
+                <span *ngIf="showMessageAlreadySubmitted">
+                    <span style="color: darkgreen">{{messageAlreadySubmitted}}</span>
+                </span>
+
+                <span *ngIf="showFailureMessageOnSaving">
+                    <h6 style="color: red;">{{messageFailureForFirstAttemptToSave}}</h6>
+                </span>
+
+                <span *ngIf="validMessage != ''">
+                    {{validMessage}}
+                </span>
+
+                <span *ngIf="showNewItemCreatedIndexMessage" style="color:blue">
+                    {{newItemCreatedIndexMessage}}
+                </span>
+
+            </span>
+
+            <div *ngIf="!showRefreshPageInCaseOfFailureAndHideOtherOptions && isSavedSuccessfully" class="mt-3">
+
+                <button class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" (click)="reloadComponent()">
+                    Create new
+                </button>
+
+                <button class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" [routerLink]="['../view-all']">
+                    Back to all
+                </button>
+
+                <button class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" (click)="goToLastSavedItemView()">
+                    View the saved item
+                </button>
+
+                <button class="btn btn-outline-secondary px-4 mx-4 py-2 my-2" (click)="goToLastSavedItemEditView()">
+                    Edit the saved item
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>

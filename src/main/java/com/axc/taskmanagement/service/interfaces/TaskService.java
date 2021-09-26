@@ -15,6 +15,10 @@ public interface TaskService {
 
     void updateTaskDescription(long id, String description);
 
+    void updateTaskStatus(long id, String status);
+
+    void updateTask(long id, String description, String status);
+
     Long deleteById(long id);
 
     Long deleteAll();

@@ -120,7 +120,7 @@ public class TaskServiceImpl implements TaskService {
 
         int rowAffected = jdbcTemplate.update(insertSql);
 
-        return (long) rowAffected;
+        return newTaskId;
     }
 
     @Override
@@ -135,6 +135,45 @@ public class TaskServiceImpl implements TaskService {
         String insertSql =
                 "UPDATE " + task_management_schema + "." + task_management_table +
                         " SET " + task_management_table + ".VCH_DESCRIPTION = '" + description + "' WHERE N_TASK_ID = " + id + "";
+
+        int rowAffected = jdbcTemplate.update(insertSql);
+
+        logger.info("rowAffected = " + rowAffected);
+    }
+
+    @Override
+    public void updateTaskStatus(long id, String status) {
+
+        logProperties("updateTaskStatus(" + id + ", " + status + ")");
+
+        logger.info("");
+        logger.info("updateTaskStatus(" + id + ", " + status + ")");
+
+
+        String insertSql =
+                "UPDATE " + task_management_schema + "." + task_management_table +
+                        " SET " + task_management_table + ".VCH_STATUS = '" + status + "' WHERE N_TASK_ID = " + id + "";
+
+        int rowAffected = jdbcTemplate.update(insertSql);
+
+        logger.info("rowAffected = " + rowAffected);
+    }
+
+    @Override
+    public void updateTask(long id, String description, String status) {
+
+        logProperties("updateTask(" + id + ", " + description + ", " + status + ")");
+
+        logger.info("");
+        logger.info("updateTask(" + id + ", " + description + ", " + status + ")");
+
+
+        String insertSql =
+                "UPDATE " + task_management_schema + "." + task_management_table +
+                        " SET "
+                        + task_management_table + ".VCH_DESCRIPTION = '" + description + "', "
+                        + task_management_table + ".VCH_STATUS = '" + status + "' "
+                        + " WHERE N_TASK_ID = " + id + "";
 
         int rowAffected = jdbcTemplate.update(insertSql);
 

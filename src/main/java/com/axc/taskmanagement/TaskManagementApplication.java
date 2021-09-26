@@ -1,7 +1,7 @@
 package com.axc.taskmanagement;
 
-import com.axc.taskmanagement.model.Task;
 import com.axc.taskmanagement.service.interfaces.TaskService;
+
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
