@@ -22,7 +22,7 @@ import static com.axc.taskmanagement.utils.datasource.DataSourceLoggerUtil.*;
 
 @Data
 @Configuration
-@Profile({"local_spring_boot", "docker"})
+@Profile({"local_spring_boot"})
 @ComponentScan("com.axc.taskmanagement")
 @ConfigurationProperties("spring.datasource")
 public class SpringJdbcConfig {

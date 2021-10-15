@@ -11,20 +11,10 @@ import { TaskViewOneDashboardComponent } from './components/task-view-one-dashbo
 import { TaskViewOneComponent } from './components/task-view-one/task-view-one.component';
 
 const routes: Routes = [
-  // {
-  //   path: 'task-add-one',
-  //   component: TaskAddOneComponent,
-  // },
-  // {
-  //   path: 'tasks',
-  //   component: TaskViewAllComponent,
-  //   resolve: { tasks: TaskResolver },
-  // },
 
   {
     path: 'tasks',
     component: TaskViewAllDashboardComponent,
-    // redirectTo: 'destination-categories-view-all',
     children: [
       {
         path: '',
@@ -80,10 +70,6 @@ const routes: Routes = [
         data: { title: 'Edit more' },
       },
 
-      // {
-      //   path: 'edit-one/:id',
-      //   component: TaskEditOneComponent
-      // }
     ],
   },
 ];

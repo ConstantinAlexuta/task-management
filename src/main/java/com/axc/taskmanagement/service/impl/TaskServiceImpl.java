@@ -26,7 +26,7 @@ import static com.axc.taskmanagement.utils.datasource.DataSourceLoggerUtil.*;
 
 @Data
 @Configuration
-@Profile({"local_spring_boot", "docker"})
+@Profile({"local_spring_boot"})
 @ComponentScan("com.axc.taskmanagement")
 @ConfigurationProperties("database")
 @Service
@@ -118,7 +118,7 @@ public class TaskServiceImpl implements TaskService {
                 "INSERT INTO " + task_management_schema + "." + task_management_table +
                         "(N_TASK_ID, VCH_DESCRIPTION, VCH_STATUS) " + "VALUES (" + newTaskId + ", '" + description + "', '" + status + "')";
 
-        int rowAffected = jdbcTemplate.update(insertSql);
+       jdbcTemplate.update(insertSql);
 
         return newTaskId;
     }

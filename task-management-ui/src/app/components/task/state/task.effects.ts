@@ -7,7 +7,7 @@ import { TaskService } from '../service/task.service';
 
 @Injectable()
 export class TaskEffects {
-  tasksPath: string = '/api/tasks';
+  taskPath: string = '/api/task';
 
   constructor(
     private taskService: TaskService,
@@ -37,7 +37,7 @@ export class TaskEffects {
       this.actions.pipe(
         ofType(taskActionTypes.createTask),
         concatMap((action) => this.taskService.createTask(action.task)),
-        tap(() => this.router.navigateByUrl(this.tasksPath))
+        tap(() => this.router.navigateByUrl(this.taskPath))
       ),
     { dispatch: false }
   );

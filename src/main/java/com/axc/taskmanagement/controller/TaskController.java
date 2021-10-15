@@ -3,7 +3,6 @@ package com.axc.taskmanagement.controller;
 import com.axc.taskmanagement.model.Task;
 import com.axc.taskmanagement.service.interfaces.TaskService;
 
-import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -11,11 +10,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
 import javax.validation.constraints.NotNull;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -32,7 +28,7 @@ public class TaskController {
         this.taskService = taskService;
     }
 
-    @PostMapping(value = "/api/task/save")
+    @PostMapping(value = "/api/task/")
     public ResponseEntity<Long> save(@RequestHeader("description") String description, @RequestHeader("status") String status) {
         Long rowAffected = taskService.saveTask(description, status);
         return new ResponseEntity<>(rowAffected, HttpStatus.CREATED);
@@ -83,7 +79,7 @@ public class TaskController {
         return new ResponseEntity<>(rowAffected, HttpStatus.OK);
     }
 
-    @DeleteMapping(value = "/api/task/deleteAll")
+    @DeleteMapping(value = "/api/task/")
     public ResponseEntity<Long> deleteAll() {
         Long rowAffected = taskService.deleteAll();
         return new ResponseEntity<>(rowAffected, HttpStatus.OK);

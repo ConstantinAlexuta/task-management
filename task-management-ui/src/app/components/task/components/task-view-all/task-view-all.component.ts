@@ -12,7 +12,6 @@ import { AppState } from 'src/store/reducers';
 import { Router } from '@angular/router';
 
 import { deleteAllTasks } from '../../state/task.actions';
-// import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-task-view-all',
@@ -81,32 +80,6 @@ export class TaskViewAllComponent implements OnInit {
     this.showDatabaseIdColumnAndHideOptionsButtons = !this
       .showDatabaseIdColumnAndHideOptionsButtons;
   }
-
-
-//   iniTask!: Task;
-//    newTask!: Task;
-
-//   changeStatus(task: Task) {
-//     let newStatus  = "To do";
-//     if(task.status == "To do") {
-//       newStatus = "Done";
-//     }
-//     this.newTask = task;
-//     this.newTask.status = newStatus;
-//
-//     this.iniTask = task;
-//     const update: Update<Task> = {
-//       id: this.iniTask!.id!,
-//       changes: {
-//          ...this.iniTask,
-//          ...this.newTask,
-//       },
-//     };
-//
-//     this.store.dispatch(taskActionTypes.updateTask({ update }));
-//   }
-
-
 
   changeStatus(task: Task) {
       let newTask  = Object.assign({}, task);
